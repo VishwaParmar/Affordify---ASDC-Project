@@ -1,0 +1,56 @@
+default:
+  image: openjdk:11
+
+stages:
+  - build
+  - test
+  - deploy-backend
+  - deploy-frontend
+
+build-application:
+  stage: build
+  image: maven:latest
+  script:
+    - cd backend
+    - mvn clean package
+  artifacts:
+    paths:
+      - backend/target/*.jar
+  only:
+    - environment/dev
+
+deploy-backend-job:
+  stage: deploy-backend
+  artifacts:
+    paths:
+      - backend/target
+  before_script:
+  script:
+    - chmod og-rwx ${VM_PRIVATE_KEY}
+    - scp -r -o StrictHostKeyChecking=no -i "${VM_PRIVATE_KEY}" backend/target/*.jar csci5308vm24@csci5308vm24.research.cs.dal.ca:/home/csci5308vm24/deploy-latest/demo-0.0.1-SNAPSHOT.jar
+    - ssh -i ${VM_PRIVATE_KEY} csci5308vm24@csci5308vm24.research.cs.dal.ca "/home/csci5308vm24/deploy-latest/stop.sh; /home/csci5308vm24/deploy-latest/start.sh"
+  only:
+    - main
+#
+deploy-frontend-job:
+  stage: deploy-frontend
+  before_script:
+    - apt-get update && apt-get install -y zip
+    - apt-get update -qq && apt-get install -y -qq sshpass
+  script:
+    - zip -r Frontend.zip frontend
+    - chmod og-rwx ${VM_PRIVATE_KEY}
+    - scp -r -o StrictHostKeyChecking=no -i "${VM_PRIVATE_KEY}" Frontend.zip csci5308vm24@csci5308vm24.research.cs.dal.ca:/home/csci5308vm24/deploy-latest/Frontend.zip
+    - ssh -i ${VM_PRIVATE_KEY} csci5308vm24@csci5308vm24.research.cs.dal.ca "/home/csci5308vm24/deploy-latest/stop-frontend.sh; /home/csci5308vm24/deploy-latest/start-frontend.sh"
+  only:
+    - environment/dev
+
+test-application:
+  stage: test
+  image: maven:latest
+  script:
+    - cd backend
+    - echo "Pipeline test started"
+    - mvn verify
+  only:
+    - environment/dev

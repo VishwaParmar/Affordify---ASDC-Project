@@ -1,0 +1,44 @@
+#search{
+
+    position: relative;
+    top: 20px;
+    right: -92px;
+
+}
+#buttonsearch{
+
+    margin-left: 20px;
+    margin-top: 10px;
+    padding: 8px 10px 10px 8px;
+    background-color: rgb(50, 224, 255);
+    border: none;
+    font-size:20px
+}
+#searchlabel{
+    position: relative;
+    top: 19px;
+    right: 300px;
+    font-size: 35px;
+
+}
+
+#SearchItems{
+
+    margin-left: 20%;
+}
+#buy{
+
+    background-color: red;
+}
+#dropdownlabel{
+
+    margin-left: 20px;
+}
+#inputCondition{
+
+    margin-left: 20px;
+}
+#searchInput{
+    margin-top: 20px;
+    margin-left: -485px;
+}
