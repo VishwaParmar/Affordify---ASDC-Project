@@ -52,7 +52,7 @@ Jsoup can be used to extract data from HTML pages on the web. It provides a simp
 
 To run Affordify locally, you'll need to have Java and Node.js installed on your computer. Once you have these installed, follow these steps:
 
-1. Clone the repository: git clone **https://git.cs.dal.ca/courses/2023-winter/csci-5308/group24**
+1. Clone the repository: git clone **[https://github.com/VishwaParmar/Affordify---ASDC-Project.git]**
 
 2. Navigate to the **group24** directory: **cd group24**
 
@@ -110,9 +110,7 @@ Affordify includes several high-priority features, including:
 
 In addition to these features, Affordify also includes
 - a web crawling bot that extracts data from ecommerce websites and stores it in a database. The platform also includes a search engine, price chart functionality, and newsletter feature
-## Demo
-To watch the full function of the website
-[Click here ](https://drive.google.com/drive/folders/1nPIgOIaKNDTQv7QFq6Z3vmZtpa4iZ73I?usp=sharing).
+- 
 ## Smells
 The smells identified in the project are majorly justifiable.
 Feature concentration and Unstable Dependency shows in our project is filled with more classes than it should, however we have ensured that they follow Single Responsibility Principle(SRP) and are related to each other and can not be split into multiple packages.
@@ -123,11 +121,6 @@ We resolved all the magic number implementation smells apeared in our project.
 Most implementation smells including long parameter list are the ones from constructors and there is a need for all the params as stated and hence can not be broken down. Also the long statements are used for object initialization and are non-breakable.
 The link to smells list and their justifications is added
 "SummaryCodeSmell.xlsx".
-
-## Contribution Statement and rating
-The link to contribution statement for the group is in "Documents/Contribution statement.xlsx".
-
-### Link to Jira Board [Group: 24 Affordify](https://affordify.atlassian.net/jira/software/projects/T24/boards/2)
 
 
 ### Test coverage
