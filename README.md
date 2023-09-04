@@ -109,7 +109,6 @@ Affordify includes several high-priority features, including:
 
 In addition to these features, Affordify also includes
 - a web crawling bot that extracts data from ecommerce websites and stores it in a database. The platform also includes a search engine, price chart functionality, and newsletter feature
-- 
 ## Smells
 The smells identified in the project are majorly justifiable.
 Feature concentration and Unstable Dependency shows in our project is filled with more classes than it should, however we have ensured that they follow Single Responsibility Principle(SRP) and are related to each other and can not be split into multiple packages.
